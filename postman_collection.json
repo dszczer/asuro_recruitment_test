@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "81563ed5-da35-4dd9-a4e5-505f3aa1f878",
+		"name": "Calculator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19449655"
+	},
+	"item": [
+		{
+			"name": "addition",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "a",
+							"value": "3,2",
+							"description": "Value A",
+							"type": "text"
+						},
+						{
+							"key": "b",
+							"value": "5.5",
+							"description": "Value B",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/addition",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"addition"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "subtraction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "a",
+							"value": "3,2",
+							"description": "Value A",
+							"type": "text"
+						},
+						{
+							"key": "b",
+							"value": "5.5",
+							"description": "Value B",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/subtraction",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"subtraction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "multiplication",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "a",
+							"value": "3,2",
+							"description": "Value A",
+							"type": "text"
+						},
+						{
+							"key": "b",
+							"value": "5.5",
+							"description": "Value B",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/multiplication",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"multiplication"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "division",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "a",
+							"value": "3,2",
+							"description": "Value A",
+							"type": "text"
+						},
+						{
+							"key": "b",
+							"value": "0",
+							"description": "Value B",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/division",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"division"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{base_password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{base_username}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "localhost",
+			"type": "string"
+		},
+		{
+			"key": "base_username",
+			"value": "front_app",
+			"type": "string"
+		},
+		{
+			"key": "base_password",
+			"value": "asuro",
+			"type": "string"
+		}
+	]
+}

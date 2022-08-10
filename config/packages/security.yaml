@@ -1,0 +1,50 @@
+security:
+    # a new authentication system is available since Symfony 5.1 to make
+    # Symfony security more extensible and easier to understand
+    # https://symfony.com/doc/current/security.html
+    enable_authenticator_manager: true
+
+    password_hashers:
+        # Our user class and the algorithm we'll use to encode passwords
+        # 'auto' means to let Symfony choose the best possible password hasher (Argon2 or Bcrypt)
+        # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
+        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'bcrypt'
+
+    providers:
+        # https://symfony.com/doc/current/security/user_provider.html
+        # In this example, users are stored via Doctrine in the database
+        # To see the users at src/App/DataFixtures/ORM/LoadFixtures.php
+        # To load users from somewhere else: https://symfony.com/doc/current/security/user_provider.html#creating-a-custom-user-provider
+        api_users:
+            memory:
+                users:
+                    front_app: { password: '$2y$13$uQdwKJ1hETrFK1r0pl/M1.5kEOoXhH6rrt1DqLekq4IX2cKJLR48S', roles: [ 'ROLE_USER' ] }
+                    customer_1: { password: '$2y$13$PFi1I ... rGwXCZ', roles: [ 'ROLE_USER' ] }
+                    customer_2: { password: '$2y$13$PFi1I ... rGwXCZ', roles: [ 'ROLE_USER' ] }
+                    customer_3: { password: '$2y$13$PFi1I ... rGwXCZ', roles: [ 'ROLE_USER' ] }
+
+    # https://symfony.com/doc/current/security.html#a-authentication-firewalls
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            # this firewall does not have a 'pattern' option because it applies to all URLs
+            provider: api_users
+            anonymous: false
+            http_basic:
+                realm: Secure API
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: '^/', roles: [ 'ROLE_USER' ] }
+
+when@test:
+    # this configuration simplifies testing URLs protected by the security mechanism
+    # See https://symfony.com/doc/current/testing/http_authentication.html
+    security:
+        firewalls:
+            main:
+                http_basic: ~
